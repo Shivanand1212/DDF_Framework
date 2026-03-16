@@ -3,41 +3,49 @@ package Com.Automation.base;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 public class listners implements ITestListener {
+	@Override
+	public void onStart(ITestContext context) {
+	    Extentreporter.initReport("C:\\Users\\Shivanand\\eclipse-workspace\\SeleAutomation\\reports");
+	}
 
-	  @Override
-	    public void onTestStart(ITestResult result) {
-	        // Create a new test entry in Extent Report
-	        ExtentTest test = Extentreporter.createTest(result.getMethod().getMethodName());
-	        test.log(Status.INFO, "Starting Test: " + result.getMethod().getMethodName());
-	        System.out.println("Starting Test: " + result.getMethod().getMethodName());
+	@Override
+	public void onTestStart(ITestResult result) {
+	    String description = result.getMethod()
+	                               .getConstructorOrMethod()
+	                               .getMethod()
+	                               .getAnnotation(Test.class)
+	                               .description();
+
+	    if (description == null || description.isEmpty()) {
+	        description = result.getMethod().getMethodName();
 	    }
 
+	    // This sets the ThreadLocal<ExtentTest> so getTest() is not null
+	    Extentreporter.createTest(description);
+	    Extentreporter.getTest().log(Status.INFO, "Starting Test: " + result.getMethod().getMethodName());
+	}
 
-    @Override
-    public void onTestSuccess(ITestResult result) {
-        System.out.println("PASSED: " + result.getMethod().getMethodName());
-        Extentreporter.flushReport();
-    }
+	@Override
+	public void onTestSuccess(ITestResult result) {
+	    Extentreporter.getTest().log(Status.PASS, "Test Passed: " + result.getMethod().getMethodName());
+	}
 
-    @Override
-    public void onTestFailure(ITestResult result) {
-        System.out.println("FAILED: " + result.getMethod().getMethodName());
-    }
+	@Override
+	public void onTestFailure(ITestResult result) {
+	    Extentreporter.getTest().log(Status.FAIL, "Test Failed: " + result.getThrowable());
+	}
 
-    @Override
-    public void onTestSkipped(ITestResult result) {
-        System.out.println("SKIPPED: " + result.getMethod().getMethodName());
-    }
-    
-    @Override
-    public void onFinish(ITestContext context) {
-        System.out.println("Test Suite Finished: " + context.getName());
-        Extentreporter.flushReport(); // flush report here
-    }
-
-}
+	@Override
+	public void onTestSkipped(ITestResult result) {
+	    Extentreporter.getTest().log(Status.SKIP, "Test Skipped: " + result.getMethod().getMethodName());
+	}
+	@Override
+	public void onFinish(ITestContext context) {
+	    Extentreporter.flushReport();
+	}}

@@ -7,11 +7,14 @@ import org.testng.annotations.Listeners;
 import com.aventstack.extentreports.Status;
 
 import Com.Automation.base.Base;
+import Com.Automation.base.ConfigReader;
 import Com.Automation.base.Extentreporter;
 import Com.Automation.base.LoggerUtil;
+import Com.Automation.base.Utility;
+import Com.Automation.pages.ABtestpage;
 
-public class FirstTest extends Base {
-
+public class FirstTest extends Utility {
+ConfigReader readconfig= new ConfigReader();
     @BeforeSuite
     public void setupSuite() {
         openBrowser();
@@ -19,10 +22,10 @@ public class FirstTest extends Base {
        Extentreporter.initReport("C:\\Users\\Shivanand\\eclipse-workspace\\SeleAutomation\\reports");
     }
 
-    @Test(description = "Verify Google homepage")
-    public void testGoogle() {
-        getDriver().get("https://www.google.com");
-        LoggerUtil.logReport("Opened Google homepage", Status.INFO);
+    @Test(description = "Do Test -First test case")
+    public void testGoogle() throws InterruptedException {
+        getDriver().get(readconfig.getProperty("url"));
+        ABtestpage.verify_versionheading();
     }
 
     @AfterSuite
