@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-16T07:27:02 IST" name="SeleniumSuite" finished-at="2026-03-16T07:27:12 IST" duration-ms="10397">
+  <suite started-at="2026-03-17T10:01:49 IST" name="Default suite" finished-at="2026-03-17T10:01:59 IST" duration-ms="10235">
     <groups>
     </groups>
-    <test started-at="2026-03-16T07:27:02 IST" name="FirstTestExecution" finished-at="2026-03-16T07:27:12 IST" duration-ms="10397">
+    <test started-at="2026-03-17T10:01:49 IST" name="Default test" finished-at="2026-03-17T10:01:59 IST" duration-ms="10235">
       <class name="Com.Automation.selenium_Automation.FirstTest">
-        <test-method is-config="true" signature="setupSuite()[pri:0, instance:Com.Automation.selenium_Automation.FirstTest@6d3a388c]" started-at="2026-03-16T07:27:01 IST" name="setupSuite" finished-at="2026-03-16T07:27:02 IST" duration-ms="1235" status="PASS">
+        <test-method is-config="true" signature="setupSuite()[pri:0, instance:Com.Automation.selenium_Automation.FirstTest@57af006c]" started-at="2026-03-17T10:01:47 IST" name="setupSuite" finished-at="2026-03-17T10:01:49 IST" duration-ms="1734" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupSuite -->
-        <test-method signature="testGoogle()[pri:0, instance:Com.Automation.selenium_Automation.FirstTest@6d3a388c]" started-at="2026-03-16T07:27:02 IST" name="testGoogle" description="Do Test -First test case" finished-at="2026-03-16T07:27:12 IST" duration-ms="10378" status="PASS">
+        <test-method signature="testGoogle()[pri:0, instance:Com.Automation.selenium_Automation.FirstTest@57af006c]" started-at="2026-03-17T10:01:49 IST" name="testGoogle" description="Do Test -First test case" finished-at="2026-03-17T10:01:59 IST" duration-ms="9817" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGoogle -->
-        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:Com.Automation.selenium_Automation.FirstTest@6d3a388c]" started-at="2026-03-16T07:27:13 IST" name="tearDownSuite" finished-at="2026-03-16T07:27:13 IST" duration-ms="214" status="PASS">
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:Com.Automation.selenium_Automation.FirstTest@57af006c]" started-at="2026-03-17T10:01:59 IST" name="tearDownSuite" finished-at="2026-03-17T10:02:00 IST" duration-ms="266" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->
       </class> <!-- Com.Automation.selenium_Automation.FirstTest -->
-    </test> <!-- FirstTestExecution -->
-  </suite> <!-- SeleniumSuite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
