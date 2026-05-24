@@ -12,20 +12,20 @@ import java.util.HashMap;
 import static io.restassured.RestAssured.*;
 public class apiTest {
 	
-//@Test
-//	
-//public void firstAPItest() {
-//	
-//	Response response=RestAssured.get("https://restful-booker.herokuapp.com/booking/1");
-//	
-//	System.out.println(response.getStatusCode());
-//	System.out.println(response.getStatusLine());
-//	System.out.println(response.getBody().asString());
-//	System.out.println(response.getTime());
-//
-//	
-//		
-//	}
+@Test
+	
+public void firstAPItest() {
+	
+	Response response=RestAssured.get("https://restful-booker.herokuapp.com/booking/1");
+	
+	System.out.println(response.getStatusCode());
+	System.out.println(response.getStatusLine());
+	System.out.println(response.getBody().asString());
+	System.out.println(response.getTime());
+
+	
+		
+	}
 
 //@Test
 //
