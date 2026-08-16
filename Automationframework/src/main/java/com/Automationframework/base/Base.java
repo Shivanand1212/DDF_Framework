@@ -3,6 +3,7 @@ package com.Automationframework.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Base {
@@ -32,7 +33,13 @@ public class Base {
 
 		 if (browser.equalsIgnoreCase("edge")) {
 	            System.setProperty("webdriver.edge.driver", "C:\\Users\\Shivanand\\eclipse-workspace\\Automationframework\\drivers\\msedgedriver.exe");
-	            driver = new EdgeDriver();
+	            EdgeOptions options = new EdgeOptions();
+	            options.addArguments("--headless=new");   // run without UI
+	            options.addArguments("--disable-gpu");    // recommended for CI
+	            options.addArguments("--window-size=1920,1080");
+
+	            WebDriver driver = new EdgeDriver(options);
+	            
 	            setDriver(driver);
 	        } else if (browser.equalsIgnoreCase("chrome")) {
 	            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
