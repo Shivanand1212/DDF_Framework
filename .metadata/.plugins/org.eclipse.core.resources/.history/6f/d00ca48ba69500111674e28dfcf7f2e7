@@ -1,0 +1,213 @@
+package com.Automationframework.pages;
+
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.swing.text.Utilities;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+
+import com.Automationframework.base.Utility;
+
+public class testautomationpage extends Utility{
+	
+	SoftAssert softassert= new SoftAssert();
+	public static WebElement name  =getDriver().findElement(By.xpath("//input[@id='name']"));
+	public static WebElement email  =getDriver().findElement(By.xpath("//input[@id='email']"));
+	public static WebElement phone  =getDriver().findElement(By.xpath("//input[@id='phone']"));
+	public static WebElement adress  =getDriver().findElement(By.xpath("//textarea[@id='textarea']"));
+
+	public static WebElement searchinput  =getDriver().findElement(By.xpath("//input[@class='wikipedia-search-input']"));
+	public static WebElement searchicon  =getDriver().findElement(By.xpath("//input[@class='wikipedia-search-button']"));
+
+	public static WebElement newtab  =getDriver().findElement(By.xpath("//button[contains(text(),'New Tab')]"));
+	public static WebElement simplePopup  =getDriver().findElement(By.xpath("//button[contains(text(),'Simple Alert')]"));
+	public static WebElement confirmPopup  =getDriver().findElement(By.xpath("//button[contains(text(),'Confirmation Alert')]"));
+	public static WebElement promptPopup  =getDriver().findElement(By.xpath("//button[contains(text(),'Prompt Alert')]"));
+
+	public static WebElement PointMe  =getDriver().findElement(By.xpath("//button[contains(text(),'Point Me')]"));
+
+	public static WebElement firstoption  =getDriver().findElement(By.xpath("(//button[contains(text(),'Point Me')]/following-sibling::div/a)"));
+	public static WebElement Copytext  =getDriver().findElement(By.xpath("//button[contains(text(),'Copy Text')]"));
+	public static WebElement field2input  =getDriver().findElement(By.xpath("//input[@id='field2']"));
+	
+	public static WebElement Drag  =getDriver().findElement(By.xpath("//div[@id='draggable']"));
+	public static WebElement Drop  =getDriver().findElement(By.xpath("//div[@id='droppable']"));
+	public static WebElement Dropdown  =getDriver().findElement(By.xpath("//input[@placeholder='Select an item']"));
+	//public static WebElement scrolltoelment  =getDriver().findElement(By.xpath("//div[contains(text(),'Item 43')]"));
+
+
+	public static void fillform() {
+		
+		waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+		enterValueTextInputField(name, "Shivanand Rohinkar");
+		
+		waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), email);
+		enterValueTextInputField(email, "ShivanandRohinkar@gmail.com");
+		
+		waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), phone);
+		enterValueTextInputField(phone, "+91 8007213633");
+		
+		waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), adress);
+		enterValueTextInputField(adress, "address waghi bobde");
+	}
+	
+	public static void getWindowhandle() throws InterruptedException {
+		
+		waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+		enterValueTextInputField(searchinput, "Test");
+
+		clickElement(searchicon, "Searchicon");
+		Thread.sleep(1000);
+		
+		List<WebElement> elment= getDriver().findElements(By.xpath("//div[@class='wikipedia-search-results']//div//a"));
+		
+		for (WebElement element: elment) {
+			if (!elment.isEmpty()) {
+				  String text = element.getText();
+				    System.out.println(text);
+				    Thread.sleep(3000);
+				    element.click();
+				    Thread.sleep(3000);
+
+			}
+		}
+			Set <String> windowhandle= getDriver().getWindowHandles();
+			List <String> tabs=new ArrayList<>(windowhandle);
+			
+			for(String tab:tabs) {
+				getDriver().switchTo().window(tab);
+				
+				String title=getDriver().getTitle();
+				System.out.println("titile is:" +title);
+				
+//				if (title.contains("Wikipedia")) {
+//			        System.out.println("✅ Title verified: " + title);
+//			    } else {
+//			        System.out.println("❌ Unexpected title: " + title);
+//			    }
+			}}
+		
+	
+
+
+public static void switchTonewwindow() throws InterruptedException {
+		
+		waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+		clickElement(newtab, "New Tab");
+		
+		String mainWindow=getDriver().getWindowHandle();
+		
+		Set <String> windowhandle= getDriver().getWindowHandles();
+		List<String> tabs= new ArrayList(windowhandle);
+		Thread.sleep(5000);
+		getDriver().switchTo().window(tabs.get(1)).close();
+		
+
+}
+
+public static void  simplePopup() throws InterruptedException {
+	waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+
+	clickElement(simplePopup, "Simple Popup");
+	Thread.sleep(3000);
+
+	Alert alert = getDriver().switchTo().alert();
+	
+	alert.accept();
+	
+	logReport("Alert accepted successfully");
+
+}
+
+public static void  Confirmpopup() throws InterruptedException {
+	waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+
+	clickElement(confirmPopup, "Confirm Popup");
+	Thread.sleep(3000);
+	Alert alert = getDriver().switchTo().alert();
+	
+	alert.accept();
+	
+	logReport("Alert accepted successfully");
+	
+
+}
+
+public static void  sendtextToAlertandAccept() throws InterruptedException {
+	waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+
+	clickElement(promptPopup, "Prompt Popup");
+	Thread.sleep(3000);
+	Alert alert = getDriver().switchTo().alert();
+	String alertmsg=alert.getText();
+	Thread.sleep(5000);
+	//alert.sendKeys("Shivanand Rohinkar");
+	Thread.sleep(5000);
+
+	alert.accept();
+	
+	logReport(alertmsg+ " Alert accepted successfully");
+	
+
+}
+
+public static void actiononElments() throws InterruptedException {
+	waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), name);
+    Thread.sleep(5000);
+	Actions act= new Actions(getDriver());
+	act.moveToElement(PointMe).pause(Duration.ofSeconds(10)).perform();
+	act.scrollToElement(Copytext).build().perform();
+	System.out.println("Mouse move overed successfully");
+
+	waitUntilElementLoad(getDriver(),Duration.ofMillis(5000), firstoption);
+
+	System.out.println(firstoption.getText());
+	Thread.sleep(3000);
+	act.doubleClick(Copytext).perform();
+	
+    String field2inputtext=field2input.getText();
+	Thread.sleep(3000);
+clickElement(Dropdown, "dropdown");
+  //WebDriverWait wait= new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+   // WebElement dropdown = wait.until(ExpectedConditions.visibilityOfElementLocated();
+    List<WebElement> options = getDriver().findElements(By.className("option"));
+    String itemText="Item 4";
+    for (WebElement option : options) {
+        if (option.getText().equalsIgnoreCase(itemText)) {
+            act.moveToElement(option).perform();
+
+            act.click(option).perform();
+
+            System.out.println("Selected: " + itemText);
+            return;
+        }
+    }
+
+    throw new NoSuchElementException("Item not found: " + itemText);
+}
+
+//upload file
+//Calendar
+//Dynamic table
+//pagination
+
+}
+
+
+
+
+
+
+
+	  
