@@ -1,9 +1,12 @@
 package com.Automationframework.base;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Base {
     public ReadConfig prop = new ReadConfig();
@@ -27,19 +30,35 @@ public class Base {
         }
 
         String browser = ReadConfig.getConfigdata("browser");
+        String headless = ReadConfig.getConfigdata("headless"); // true/false
         WebDriver driver;
 
         if (browser.equalsIgnoreCase("edge")) {
-        	System.setProperty("webdriver.edge.driver", "C:\\Users\\Shivanand\\eclipse-workspace\\Automationframework\\drivers\\msedgedriver.exe");
-        	 driver = new EdgeDriver();
+            EdgeOptions options = new EdgeOptions();
+            if (headless.equalsIgnoreCase("true")) {
+                options.addArguments("--headless=new");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+            }
+            driver = new EdgeDriver(options);
 
         } else if (browser.equalsIgnoreCase("chrome")) {
-            // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            if (headless.equalsIgnoreCase("true")) {
+                options.addArguments("--headless=new");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+            }
+            driver = new ChromeDriver(options);
 
         } else if (browser.equalsIgnoreCase("firefox")) {
-            // System.setProperty("webdriver.gecko.driver", "path/to/geckodriver.exe");
-            driver = new FirefoxDriver();
+            FirefoxOptions options = new FirefoxOptions();
+            if (headless.equalsIgnoreCase("true")) {
+                options.addArguments("--headless");
+                options.addArguments("--width=1920");
+                options.addArguments("--height=1080");
+            }
+            driver = new FirefoxDriver(options);
 
         } else {
             throw new RuntimeException("Unsupported browser: " + browser);
