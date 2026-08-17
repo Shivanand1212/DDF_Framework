@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;com.Automationframework.pages.LoginPage&apos; to &apos;testautomationpage&apos;&#x0D;&#x0A;- Original project: &apos;Automationframework&apos;&#x0D;&#x0A;- Original element: &apos;com.Automationframework.pages.LoginPage&apos;&#x0D;&#x0A;- Renamed element: &apos;com.Automationframework.pages.testautomationpage&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;LoginPage&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.Automationframework.pages{LoginPage.java[LoginPage" matchStrategy="1" name="testautomationpage" qualified="false" references="true" similarDeclarations="false" stamp="1785517532943" textual="false" version="1.0"/>
-</session>
