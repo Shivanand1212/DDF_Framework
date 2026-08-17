@@ -131,7 +131,7 @@ public static void  simplePopup() throws InterruptedException {
 	
 	alert.accept();
 	
-	logReport("Alert accepted successfully",true,driver);
+	logReport("Alert accepted successfully",true,getDriver());
 
 }
 
@@ -144,7 +144,7 @@ public static void  Confirmpopup() throws InterruptedException {
 	
 	alert.accept();
 	
-	logReport("Alert accepted successfully",true,driver);
+	logReport("Alert accepted successfully",true,getDriver());
 	
 
 }
@@ -162,7 +162,7 @@ public static void  sendtextToAlertandAccept() throws InterruptedException {
 
 	alert.accept();
 	
-	logReport(alertmsg+ " Alert accepted successfully",true,driver);
+	logReport(alertmsg+ " Alert accepted successfully",true,getDriver());
 	
 
 }

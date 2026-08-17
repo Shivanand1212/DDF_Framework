@@ -96,26 +96,26 @@ public class Utility extends Base {
 	
 	public static void clickElement(WebElement element, String message) {
 	    if (element == null) {
-	        logReport("Element is null. Cannot perform click: " + message,true,driver);
+	        logReport("Element is null. Cannot perform click: " + message,true,getDriver());
 	        return;
 	    }
 
 	    try {
 	        if (element.isDisplayed() && element.isEnabled()) {
 	            element.click();
-	            logReport(message + " - element clicked successfully.",true,driver);
+	            logReport(message + " - element clicked successfully.",true,getDriver());
 	        } else {
-	            logReport(message + " - element not clickable (not displayed or disabled).",true,driver);
+	            logReport(message + " - element not clickable (not displayed or disabled).",true,getDriver());
 	        }
 	    } catch (Exception e) {
-	        logReport("Failed to click on element: " + message + " | Exception: " + e.getMessage(),true,driver);
+	        logReport("Failed to click on element: " + message + " | Exception: " + e.getMessage(),true,getDriver());
 	    }
 	}	
 	
 	
 	public static void enterValueTextInputField(WebElement element, String value) {
 	    if (element == null) {
-	        logReport("Element is null. Cannot enter value: " + value,true,driver);
+	        logReport("Element is null. Cannot enter value: " + value,true,getDriver());
 	        return;
 	    }
 
@@ -123,12 +123,12 @@ public class Utility extends Base {
 	        if (element.isDisplayed() && element.isEnabled()) {
 	            element.clear();
 	            element.sendKeys(value);
-	            logReport("Value '" + value + "' entered successfully in input field.",true,driver);
+	            logReport("Value '" + value + "' entered successfully in input field.",true,getDriver());
 	        } else {
-	            logReport("Element not interactable. Failed to enter value: " + value,true,driver);
+	            logReport("Element not interactable. Failed to enter value: " + value,true,getDriver());
 	        }
 	    } catch (Exception e) {
-	        logReport("Failed to enter '" + value + "' in input field. Exception: " + e.getMessage(),true,driver);
+	        logReport("Failed to enter '" + value + "' in input field. Exception: " + e.getMessage(),true,getDriver());
 	    }
 	}
 	
