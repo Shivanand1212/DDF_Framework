@@ -30,8 +30,8 @@ public class Base {
         WebDriver driver;
 
         if (browser.equalsIgnoreCase("edge")) {
-            // System.setProperty("webdriver.edge.driver", "path/to/msedgedriver.exe");
-            driver = new EdgeDriver();
+        	System.setProperty("webdriver.edge.driver", "C:\\Users\\Shivanand\\eclipse-workspace\\Automationframework\\drivers\\msedgedriver.exe");
+        	 driver = new EdgeDriver();
 
         } else if (browser.equalsIgnoreCase("chrome")) {
             // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
