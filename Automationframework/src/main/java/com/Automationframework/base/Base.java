@@ -35,13 +35,18 @@ public class Base {
 
         if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions options = new EdgeOptions();
+            // Explicitly point to 64-bit Edge binary
+            options.setBinary("C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe");
+
             if (headless.equalsIgnoreCase("true")) {
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--disable-software-rasterizer");
                 options.addArguments("--window-size=1920,1080");
             }
-            driver = new EdgeDriver(options);
 
+            driver = new EdgeDriver(options);
         } else if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             if (headless.equalsIgnoreCase("true")) {
