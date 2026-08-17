@@ -36,7 +36,7 @@ public class Base {
         if (browser.equalsIgnoreCase("edge")) {
             EdgeOptions options = new EdgeOptions();
             // Explicitly point to 64-bit Edge binary
-            options.setBinary("C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe");
+            options.setBinary("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
 
             if (headless.equalsIgnoreCase("true")) {
                 options.addArguments("--headless=new");
