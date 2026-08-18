@@ -49,14 +49,18 @@ public class Base {
             driver = new EdgeDriver(options);
         } else if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
+
+            // Explicitly point to Chrome binary
+            options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+
             if (headless.equalsIgnoreCase("true")) {
                 options.addArguments("--headless=new");
                 options.addArguments("--disable-gpu");
                 options.addArguments("--window-size=1920,1080");
             }
-            driver = new ChromeDriver(options);
 
-        } else if (browser.equalsIgnoreCase("firefox")) {
+            driver = new ChromeDriver(options);
+        }else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
             if (headless.equalsIgnoreCase("true")) {
                 options.addArguments("--headless");
